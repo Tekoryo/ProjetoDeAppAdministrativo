@@ -1,5 +1,8 @@
 package dados;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Dados{
     
     protected Integer ID;
@@ -9,8 +12,9 @@ public abstract class Dados{
     protected double Valor;
     protected double Historico;
 
-    public Dados(){
-        
+    List<Double> HistoricoDePreco=new ArrayList<>();
+
+    public Dados(){      
     }
     public Dados(int ID,String Nome,String LocalDaCompra,int Quantidade,double Valor){
         this.ID=ID;
@@ -49,6 +53,17 @@ public abstract class Dados{
     }
     public double getHistorico() {
         return Historico;
+    }
+    // Criar um object para Historico
+    public void addHistorico(){
+        double preco=this.Valor;
+        HistoricoDePreco.add(preco);
+    }
+    public double ViewHistorico(){
+        for(double H:HistoricoDePreco){
+            return H;
+        }
+        return 0;
     }
        
 }
