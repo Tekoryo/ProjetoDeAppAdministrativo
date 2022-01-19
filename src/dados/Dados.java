@@ -16,6 +16,12 @@ public abstract class Dados{
 
     public Dados(){      
     }
+    
+    public Dados(Integer iD, String nome) {
+        ID = iD;
+        Nome = nome;
+    }
+
     public Dados(int ID,String Nome,String LocalDaCompra,int Quantidade,double Valor){
         this.ID=ID;
         this.Nome=Nome;
