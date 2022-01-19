@@ -15,16 +15,18 @@ public class App {
     static List<Dados>dados=new ArrayList<>();
     public static void main(String[] args) throws Exception {
         try{
-            int y=Sc.nextInt();
-            if(y==1){
+            System.out.print("Cadastra Obra ou outros? (O/A):");
+            //Altera a varivel y
+            char y=Sc.next().charAt(0);
+            if(y=='o'||y=='O'){
                 char x;
                 do{
                     Cadastrodados();
                     System.out.print("Continuar (Sim=S/Não=n)?");
                     x=Sc.next().charAt(0);
                 }while(x=='S'||x=='s'); 
-            }else if(y==2){
-
+            }else if(y=='a'||y=='A'){
+                Cadastrodados();
             }
         }
         catch(Exception e){
