@@ -15,12 +15,17 @@ public class App {
     static List<Dados>dados=new ArrayList<>();
     public static void main(String[] args) throws Exception {
         try{
-            int x;
-            do{
-                Cadastrodados();
-                System.out.print("Continuar (Sim=1/Não=0)?");
-                x=Sc.nextInt();
-            }while(x==1);  
+            int y=Sc.nextInt();
+            if(y==1){
+                char x;
+                do{
+                    Cadastrodados();
+                    System.out.print("Continuar (Sim=S/Não=n)?");
+                    x=Sc.next().charAt(0);
+                }while(x=='S'||x=='s'); 
+            }else if(y==2){
+
+            }
         }
         catch(Exception e){
             System.out.println("Erro: "+e.getMessage());
@@ -31,18 +36,22 @@ public class App {
         }
         
     }
+
     public static void Cadastrodados(){
         System.out.print("ID: ");
         int ID=Sc.nextInt();
         System.out.print("Nome: ");
         String Nome=Sc.next();
-        System.out.print("Funcionraio = 1/Insumo=2/Chapa=3: "); 
+
+        System.out.print("Funcionraio=1/Insumo=2/Chapa=3/Obras=4: "); 
         int info=Sc.nextInt();
 
         if(info==2||info==3){
             CadastroDeMateriais(info, ID,Nome);
         }else if(info==1){
             CadastroDeFuncionario(ID,Nome);
+        }else if(info==4){
+            CadastrodadoDeObras(ID,Nome);
         }
     }
     public static void CadastroDeMateriais(int info,int ID,String Nome){
@@ -80,5 +89,19 @@ public class App {
 
         dados.add(new dados.Funcionario(ID, Nome, telefone, salario, TipoDeContrato.valueOf(TipoContrato), FuncaoNaEmpresa));
     } 
+    public static void CadastrodadoDeObras(int ID,String Nome){
+
+        System.out.print("Nome da Empresa: ");
+        String NomeEmpresa=Sc.next();
+        System.out.print("Valor Bruto a receber: ");
+        double ValorBruto=Sc.nextDouble();
+        /*
+        System.out.print("Data inicial: ");
+        String TipoContrato=Sc.next();
+        System.out.print("Data Final: ");
+        String FuncaoNaEmpresa=Sc.next();
+        */
+        dados.add(new dados.Obra(ID, Nome, NomeEmpresa, ValorBruto));
+    }
 }
  
