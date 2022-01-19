@@ -5,15 +5,19 @@ import java.util.List;
 
 public class Chapa extends Dados {
     private double Sobra;
-    
-    List<Dados> DadosChapa=new ArrayList<>();
-
+    private double Espessura;
     public Chapa(){
         super();
     }
-    public Chapa(int ID,String Nome,String LocalDaCompra,int Quantidade,double Valor,double Sobra){
+    public Chapa(int ID,String Nome,String LocalDaCompra,int Quantidade,double Valor,double Espessura){
         super(ID,Nome,LocalDaCompra,Quantidade,Valor);
-        this.Sobra=Sobra;
+        this.Espessura=Espessura;
     }
-
+    public double getSobra() {
+        return Sobra;
+    }
+    public void setSobra(double sobra) {
+        Sobra = sobra;
+    }
+    
 }
