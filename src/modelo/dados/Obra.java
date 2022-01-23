@@ -4,26 +4,22 @@ package modelo.dados;
 
 import javax.management.loading.PrivateClassLoader;
 
-public class Obra extends Dados {
-    private String NomeEmpresa;
+public class Obra extends CadastroDeDados {
     //private Date Datainicio,DataFinal;
     private double ValorBruto;
     
     public Obra() {
-        super();
+       super();
     }
-    public Obra(Integer iD, String nome, String nomeEmpresa, double valorBruto) {
-        super(iD, nome);
-        NomeEmpresa = nomeEmpresa;
-        //Datainicio = datainicio;
-        //DataFinal = dataFinal;
+
+    public Obra(Integer ID, String nome, double valorBruto) {
+        super(ID, nome);
         ValorBruto = valorBruto;
     }
-    public String getNomeEmpresa() {
-        return NomeEmpresa;
-    }
-    public void setNomeEmpresa(String nomeEmpresa) {
-        NomeEmpresa = nomeEmpresa;
+
+    public Obra(int ID, String Nome, double valorBruto) {
+        super(ID, Nome);
+        ValorBruto = valorBruto;
     }
 /*
     public Date getDatainicio() {

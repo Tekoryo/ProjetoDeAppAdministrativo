@@ -2,7 +2,7 @@ package modelo.dados;
 
 import modelo.dados.enums.TipoDeContrato;
 
-public class Funcionario extends Dados {
+public class Funcionario extends CadastroDeDados {
     private Long telefone;
     private double salario;
     private TipoDeContrato TipoContrato;

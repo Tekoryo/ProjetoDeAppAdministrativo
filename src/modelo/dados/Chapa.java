@@ -1,23 +1,31 @@
 package modelo.dados;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Chapa extends Insumo {
+    private Double Sobra;
+    private Double Espessura;
 
-public class Chapa extends Dados {
-    private double Sobra;
-    private double Espessura;
     public Chapa(){
         super();
+    }
+    public Chapa(int ID, String Nome){
+        super(ID, Nome);
     }
     public Chapa(int ID,String Nome,String LocalDaCompra,int Quantidade,double Valor,double Espessura){
         super(ID,Nome,LocalDaCompra,Quantidade,Valor);
         this.Espessura=Espessura;
     }
-    public double getSobra() {
+    
+    public Double getSobra() {
         return Sobra;
     }
-    public void setSobra(double sobra) {
-        Sobra = sobra;
+    public void setSobra(Double sobra) {
+        this.Sobra = sobra;
     }
-    
+    public Double getEspessura() {
+        return Espessura;
+    }
+    public void setEspessura(Double espessura) {
+        this.Espessura = espessura;
+    }
+        
 }
