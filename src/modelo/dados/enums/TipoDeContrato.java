@@ -1,4 +1,4 @@
-package dados.enums;
+package modelo.dados.enums;
 
 public enum TipoDeContrato {
     

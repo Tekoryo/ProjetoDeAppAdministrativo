@@ -1,4 +1,4 @@
-package dados;
+package modelo.dados;
 
 public class Insumo extends Dados {
 

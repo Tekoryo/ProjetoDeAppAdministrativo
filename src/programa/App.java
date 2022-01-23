@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import dados.Chapa;
-import dados.Dados;
-import dados.Insumo;
-import dados.enums.TipoDeContrato;
+import modelo.dados.Chapa;
+import modelo.dados.Dados;
+import modelo.dados.Insumo;
+import modelo.dados.enums.TipoDeContrato;
 
 
 public class App {
@@ -89,7 +89,7 @@ public class App {
         System.out.print("Função na empresa: ");
         String FuncaoNaEmpresa=Sc.next();
 
-        dados.add(new dados.Funcionario(ID, Nome, telefone, salario, TipoDeContrato.valueOf(TipoContrato), FuncaoNaEmpresa));
+        dados.add(new modelo.dados.Funcionario(ID, Nome, telefone, salario, TipoDeContrato.valueOf(TipoContrato), FuncaoNaEmpresa));
     } 
     public static void CadastrodadoDeObras(int ID,String Nome){
 
@@ -103,7 +103,7 @@ public class App {
         System.out.print("Data Final: ");
         String FuncaoNaEmpresa=Sc.next();
         */
-        dados.add(new dados.Obra(ID, Nome, NomeEmpresa, ValorBruto));
+        dados.add(new modelo.dados.Obra(ID, Nome, NomeEmpresa, ValorBruto));
     }
 }
  

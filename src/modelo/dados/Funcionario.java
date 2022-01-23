@@ -1,6 +1,6 @@
-package dados;
+package modelo.dados;
 
-import dados.enums.TipoDeContrato;
+import modelo.dados.enums.TipoDeContrato;
 
 public class Funcionario extends Dados {
     private Long telefone;
