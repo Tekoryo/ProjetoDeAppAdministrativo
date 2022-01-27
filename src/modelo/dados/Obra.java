@@ -2,8 +2,6 @@ package modelo.dados;
 
 //import java.util.Date;
 
-import javax.management.loading.PrivateClassLoader;
-
 public class Obra extends CadastroDeDados {
     //private Date Datainicio,DataFinal;
     private double ValorBruto;

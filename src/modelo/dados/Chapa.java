@@ -7,8 +7,9 @@ public class Chapa extends Insumo {
     public Chapa(){
         super();
     }
-    public Chapa(int ID, String Nome){
+    public Chapa(int ID, String Nome,double Espessura){
         super(ID, Nome);
+        this.Espessura=Espessura;
     }
     public Chapa(int ID,String Nome,String LocalDaCompra,int Quantidade,double Valor,double Espessura){
         super(ID,Nome,LocalDaCompra,Quantidade,Valor);

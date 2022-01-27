@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import modelo.dados.CadastroDeDados;
 import modelo.dados.Chapa;
 import modelo.dados.Empresa;
-import modelo.dados.CadastroDeDados;
+import modelo.dados.Estoque;
 import modelo.dados.Insumo;
 import modelo.dados.Obra;
 import modelo.dados.enums.TipoDeContrato;
@@ -15,6 +16,7 @@ import modelo.dados.enums.TipoDeContrato;
 public class App {
     static Scanner Sc=new Scanner(System.in);
     static List<CadastroDeDados>dados=new ArrayList<>();
+    static Estoque estoque=new Estoque();
     public static void main(String[] args) throws Exception {
         try{
             System.out.print("Cadastra Obra ou outros? (1/0):");
@@ -58,17 +60,16 @@ public class App {
                 }
             }while(liberar);
         }
-
+        
     }
     public static void Cadastrodados(int info){
-
         System.out.print("ID: ");
         int ID=Sc.nextInt();
         System.out.print("Nome: ");
         String Nome=Sc.next();
 
         if(info==2||info==3){
-            CadastroDeMateriais(info, ID,Nome);
+            estoque.Cadastraitem();
         }else if(info==1){
             CadastroDeFuncionario(ID,Nome);
         }else if(info==4){
