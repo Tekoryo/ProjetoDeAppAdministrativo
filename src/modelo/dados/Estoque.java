@@ -32,6 +32,8 @@ public class Estoque {
         }
     }
     public void modificaritem(){
+        System.out.println("Irá adicionar ou remover item [A/r]: ");
+        char modificador=Sc.next().charAt(0);
         System.out.print("ID que Deseja: ");
         int Buscar=Sc.nextInt();
         System.out.print("Estoque ou Chapa[1/0]: ");
@@ -39,18 +41,51 @@ public class Estoque {
         if(y==1){
             Insumo insumos=insumo.stream().filter(x -> x.getID()==Buscar).findFirst().orElse(null);
             if(insumos!=null){
-                System.out.print("Que item você deseja modificar: ");
-                int quatidade=Sc.nextInt();
-                insumos.setQuantidade(quatidade);
-                
+                if(modificador=='a'||modificador=='A'){
+                    addInsumo(insumos);
+                }else{
+                    diminuirinsumo(insumos);
+                }
             }
         }else{
             Chapa chapas=chapa.stream().filter(x -> x.getID()==Buscar).findFirst().orElse(null);
             if(chapas!=null){
-                System.out.print("Que item você deseja modificar: ");
-                int quatidade=Sc.nextInt();
-                chapas.setQuantidade(quatidade);
+                if(modificador=='a'||modificador=='A'){
+                    addChapa(chapas);
+                }else{
+                    diminuirChapa(chapas);
+                }
             }
         } 
+    } 
+    public void addInsumo(Insumo insumos){
+        System.out.print("Local onde foi comprado: ");
+        String LocalDaCompra=Sc.next();
+        System.out.print("Quantidade: ");
+        int quatidade=Sc.nextInt();
+        System.out.print("preco unitario: ");
+        double PrecoUnicario=Sc.nextInt();
+        insumos.aumentarItem(LocalDaCompra,quatidade,PrecoUnicario);
+    }
+    public void diminuirinsumo(Insumo insumos){
+        System.out.print("Que item você deseja modificar: ");
+        int quatidade=Sc.nextInt();
+        insumos.diminuirItem(quatidade);
+    }
+
+    public void addChapa(Chapa chapas){
+        System.out.print("Local onde foi comprado: ");
+        String LocalDaCompra=Sc.next();
+        System.out.print("Quantidade: ");
+        Double metroQuadrado=Sc.nextDouble();
+        System.out.print("preco unitario: ");
+        double ValorPorMetroQuadrado=Sc.nextInt();
+        chapas.aumentarItem(LocalDaCompra, metroQuadrado, ValorPorMetroQuadrado);
+    }
+    public void diminuirChapa(Chapa chapas){
+        System.out.print("Que item você deseja modificar: ");
+        double metroQuadrado=Sc.nextDouble();
+        chapas.diminuirItem(metroQuadrado);
+        
     }
 }

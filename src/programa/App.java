@@ -83,20 +83,6 @@ public class App {
         int Quantidade=Sc.nextInt();
         System.out.print("Valor: ");
         double Preco=Sc.nextDouble();
-
-        if(info==2){
-            CadastroDeInsumo(ID,Nome,LocalDaCompra, Quantidade, Preco);
-        }else if(info==3){
-            CadastroDeChapa(ID, Nome, LocalDaCompra, Quantidade, Preco);
-        }
-    }
-    public static void CadastroDeInsumo(int ID,String Nome,String LocalDaCompra,int Quantidade,double Preco) {
-        dados.add(new Insumo(ID, Nome, LocalDaCompra, Quantidade, Preco));
-    }
-    public static void CadastroDeChapa(int ID,String Nome,String    LocalDaCompra,int Quantidade,double Preco) {
-        System.out.print("Espessura: ");
-        double Espessura=Sc.nextDouble();
-        dados.add(new Chapa(ID, Nome, LocalDaCompra, Quantidade, Preco,Espessura));        
     }
     public static void CadastroDeFuncionario(int ID,String Nome){
 

@@ -2,9 +2,10 @@ package modelo.dados;
 
 public class Insumo extends CadastroDeDados {
 
-    private String LocalDaCompra;
-    private int Quantidade;
-    private Double Valor;
+    protected String LocalDaCompra;
+    protected int Quantidade;
+    protected Double ValorUnitario;
+    protected Double ValorTotal;
 
     public Insumo() {
         super();
@@ -16,31 +17,32 @@ public class Insumo extends CadastroDeDados {
         super(ID, Nome);
         this.LocalDaCompra=LocalDaCompra;
         this.Quantidade=Quantidade;
-        this.Valor=Valor;
+        this.ValorUnitario=Valor;
+    }
+    public Insumo(int ID, String Nome, String LocalDaCompra, double Valor) {
+        super(ID, Nome);
+        this.LocalDaCompra=LocalDaCompra;
+        this.ValorUnitario=Valor;
     }
 
     public String getLocalDaCompra() {
         return LocalDaCompra;
     }
-
-    public void setLocalDaCompra(String localDaCompra) {
-        LocalDaCompra = localDaCompra;
-    }
-
     public int getQuantidade() {
         return Quantidade;
     }
-
-    public void setQuantidade(int quantidade) {
-        Quantidade = quantidade;
-    }
-
     public Double getValor() {
-        return Valor;
+        return ValorUnitario;
     }
 
-    public void setValor(Double valor) {
-        Valor = valor;
+    public void aumentarItem(String LocalDaCompra, int Quantidade, double ValorUnitario){
+        this.LocalDaCompra=LocalDaCompra;
+        this.Quantidade=Quantidade;
+        this.ValorUnitario=ValorUnitario;
+        this.ValorTotal=Quantidade*ValorUnitario;
     }
-    
+    public void diminuirItem(int Quantidade){
+        this.Quantidade=this.Quantidade-Quantidade;
+        
+    }
 }
