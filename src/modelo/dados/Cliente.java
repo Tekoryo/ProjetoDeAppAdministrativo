@@ -3,21 +3,21 @@ package modelo.dados;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Empresa extends CadastroDeDados{
-    //Mudar o nome assim que pensar em um melhor (Empresa esta responçavel tanto pelos dados da pessoaJuridica ou pessoafisica)
+public class Cliente extends CadastroDeDados{
+    
     private Integer CNPJ,CPF;
 
     static List<Obra>Obras=new ArrayList<>();
 
-    public Empresa() {
+    public Cliente() {
        super();
         
     }
-    public Empresa(Integer iD, String nome,int CPF) {
-        super(iD, nome);
+    public Cliente(Integer ID, String nome,int CPF) {
+        super(ID, nome);
         this.CPF = CPF;
     }
-    public Empresa(int ID, String Nome, int CNPJ) {
+    public Cliente(int ID, String Nome, int CNPJ) {
         super(ID, Nome);
         this.CNPJ = CNPJ;    
     }
@@ -28,6 +28,7 @@ public class Empresa extends CadastroDeDados{
     public int getCPF() {
         return CPF;
     } 
+
     // Criar um metodo para fazer as alteracao do dados caso seja nessesario
 
     public static void AddObra(Obra obra) {

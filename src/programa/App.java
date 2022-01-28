@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import modelo.dados.CadastroDeDados;
 import modelo.dados.Chapa;
-import modelo.dados.Empresa;
+import modelo.dados.Cliente;
 import modelo.dados.Estoque;
 import modelo.dados.Insumo;
 import modelo.dados.Obra;
@@ -17,6 +17,8 @@ public class App {
     static Scanner Sc=new Scanner(System.in);
     static List<CadastroDeDados>dados=new ArrayList<>();
     static Estoque estoque=new Estoque();
+    static Cliente empresa=new Cliente();
+    
     public static void main(String[] args) throws Exception {
         try{
             System.out.print("Cadastra Obra ou outros? (1/0):");
@@ -103,11 +105,11 @@ public class App {
         if(PFPJ==1){
             System.out.print("Digite o CPF: ");
             int CPF=Sc.nextInt();
-            dados.add(new Empresa(ID,Nome,CPF));
+            dados.add(new Cliente(ID,Nome,CPF));
         }else{
             System.out.print("Digite o CNPJ: ");
             int CNPJ=Sc.nextInt();
-            dados.add(new Empresa(ID,Nome,CNPJ));
+            dados.add(new Cliente(ID,Nome,CNPJ));
         }
         /*
         System.out.print("Data inicial: ");
@@ -130,7 +132,8 @@ public class App {
             double ValorObra=Sc.nextDouble();
 
             Obra NovaObra=new Obra(IDObra, NomeObra, ValorObra);
-            Empresa.AddObra(NovaObra);
+            Cliente.AddObra(NovaObra);
+            
     }
 }
  
