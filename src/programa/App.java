@@ -8,6 +8,7 @@ import modelo.entities.CadastroDeDados;
 import modelo.entities.Cliente;
 import modelo.entities.Obra;
 import modelo.entities.enums.TipoDeContrato;
+import modelo.servise.ContratoDeFuncionario;
 import modelo.servise.Estoque;
 
 
@@ -16,6 +17,7 @@ public class App {
     static List<CadastroDeDados>dados=new ArrayList<>();
     static Estoque estoque=new Estoque();
     static Cliente empresa=new Cliente();
+    static ContratoDeFuncionario contratoDeFuncionario=new ContratoDeFuncionario();
     
     public static void main(String[] args) throws Exception {
         try{
@@ -71,32 +73,11 @@ public class App {
         if(info==2||info==3){
             estoque.Cadastraitem();
         }else if(info==1){
-            CadastroDeFuncionario(ID,Nome);
+            contratoDeFuncionario.CadastroDeFuncionario(ID,Nome);
         }else if(info==4){
             CadastroDeEmpresa(ID,Nome);
         }
     }
-    public static void CadastroDeMateriais(int info,int ID,String Nome){
-        System.out.print("Local da compra: ");
-        String LocalDaCompra=Sc.next();
-        System.out.print("Quantidade: ");
-        int Quantidade=Sc.nextInt();
-        System.out.print("Valor: ");
-        double Preco=Sc.nextDouble();
-    }
-    public static void CadastroDeFuncionario(int ID,String Nome){
-
-        System.out.print("telefone: ");
-        Long telefone=Sc.nextLong();
-        System.out.print("salario: ");
-        double salario=Sc.nextDouble();
-        System.out.print("Tipo de Contratação: ");
-        String TipoContrato=Sc.next();
-        System.out.print("Função na empresa: ");
-        String FuncaoNaEmpresa=Sc.next();
-
-        dados.add(new modelo.entities.Funcionario(ID, Nome, telefone, salario, TipoDeContrato.valueOf(TipoContrato), FuncaoNaEmpresa));
-    } 
     public static void CadastroDeEmpresa(int ID,String Nome){
         System.out.print("CPF ou CNPJ [1/0]: ");
         int PFPJ=Sc.nextInt();
