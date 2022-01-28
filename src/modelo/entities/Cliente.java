@@ -1,4 +1,4 @@
-package modelo.dados;
+package modelo.entities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class Cliente extends CadastroDeDados{
     public int getCPF() {
         return CPF;
     } 
-
+    
     // Criar um metodo para fazer as alteracao do dados caso seja nessesario
 
     public static void AddObra(Obra obra) {

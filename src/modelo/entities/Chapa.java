@@ -1,4 +1,4 @@
-package modelo.dados;
+package modelo.entities;
 
 public class Chapa extends Insumo {
     protected Double metroQuadrado;

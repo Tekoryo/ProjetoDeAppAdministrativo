@@ -1,8 +1,11 @@
-package modelo.dados;
+package modelo.servise;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import modelo.entities.Chapa;
+import modelo.entities.Insumo;
 
 public class Estoque {
     private Scanner Sc=new Scanner(System.in);

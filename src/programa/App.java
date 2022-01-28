@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import modelo.dados.CadastroDeDados;
-import modelo.dados.Chapa;
-import modelo.dados.Cliente;
-import modelo.dados.Estoque;
-import modelo.dados.Insumo;
-import modelo.dados.Obra;
-import modelo.dados.enums.TipoDeContrato;
+import modelo.entities.CadastroDeDados;
+import modelo.entities.Cliente;
+import modelo.entities.Obra;
+import modelo.entities.enums.TipoDeContrato;
+import modelo.servise.Estoque;
 
 
 public class App {
@@ -97,7 +95,7 @@ public class App {
         System.out.print("Função na empresa: ");
         String FuncaoNaEmpresa=Sc.next();
 
-        dados.add(new modelo.dados.Funcionario(ID, Nome, telefone, salario, TipoDeContrato.valueOf(TipoContrato), FuncaoNaEmpresa));
+        dados.add(new modelo.entities.Funcionario(ID, Nome, telefone, salario, TipoDeContrato.valueOf(TipoContrato), FuncaoNaEmpresa));
     } 
     public static void CadastroDeEmpresa(int ID,String Nome){
         System.out.print("CPF ou CNPJ [1/0]: ");

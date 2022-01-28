@@ -1,13 +1,15 @@
-package modelo.dados;
+package modelo.entities;
 
-import modelo.dados.enums.TipoDeContrato;
+import java.util.Date;
+
+import modelo.entities.enums.TipoDeContrato;
 
 public class Funcionario extends CadastroDeDados {
     private Long telefone;
     private double salario;
     private TipoDeContrato TipoContrato;
     private String FuncaoNaEmpresa;
-    //private Date DataAdimicao;
+    private Date DataAdimicao;
 
     public Funcionario() {
         super();
@@ -45,6 +47,7 @@ public class Funcionario extends CadastroDeDados {
         FuncaoNaEmpresa = funcaoNaEmpresa;
     }
     
+
     
     
 }
