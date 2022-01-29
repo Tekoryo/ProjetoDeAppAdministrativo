@@ -27,11 +27,19 @@ public class Chapa extends Insumo {
         this.LocalDaCompra=LocalDaCompra;
         this.metroQuadrado=metroQuadrado;
         this.ValorUnitario=ValorPorMetroQuadrado;
-        this.ValorTotal=metroQuadrado*ValorUnitario;
     }
     
     public void diminuirItem(Double metroQuadrado){
         this.metroQuadrado=this.metroQuadrado-metroQuadrado;
         
     }
+    @Override
+    public String toString() {
+        return  " | ID da Chapa: "+super.getID()
+                + "\n | Nome da Chapa: "+super.getNome() 
+                + "\n | Local da Compra: "+super.getLocalDaCompra()
+                + "\n | Espessura: " + String.format("%.1f",Espessura) 
+                + "\n | Metro Quadrado" + String.format("%.2f",metroQuadrado);
+    }
+    
 }

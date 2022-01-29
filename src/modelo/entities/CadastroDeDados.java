@@ -29,5 +29,10 @@ public abstract class CadastroDeDados{
     public void setNome(String nome) {
         Nome = nome;
     }
+
+    @Override
+    public String toString() {
+        return "ID: " + ID + ", Nome: " + Nome;
+    }
        
 }

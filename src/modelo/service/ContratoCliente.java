@@ -5,10 +5,17 @@ import java.util.List;
 import java.util.Scanner;
 
 import modelo.entities.Cliente;
+import modelo.service.Estoque;
 
 public class ContratoCliente{
     Scanner Sc=new Scanner(System.in);
     List<Cliente>clientes=new ArrayList<>();
+
+    public void Indicador(){
+        CadastraCliente();
+        CadastraObra();
+        GastoObra();
+    }
 
     public void CadastraCliente(){
         System.out.print("ID: ");
@@ -35,7 +42,14 @@ public class ContratoCliente{
         controleDeObra.AdicionarObra();
 
     }
-
+    public void VisualizarEstoque(Estoque e){
+        
+    }
+    public void GastoObra(){
+        Cliente Idclientes=VerificadorId();
+        ControleDeObra controleDeObra=Idclientes.Obra();
+        controleDeObra.EstO();
+    }
     public Cliente VerificadorId(){
         System.out.print("ID que Deseja: ");
         int Buscar=Sc.nextInt();

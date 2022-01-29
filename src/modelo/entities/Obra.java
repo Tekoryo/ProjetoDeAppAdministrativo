@@ -1,10 +1,13 @@
 package modelo.entities;
 
+import javax.swing.text.StyledEditorKit.BoldAction;
+
 //import java.util.Date;
 
 public class Obra extends CadastroDeDados {
     //private Date Datainicio,DataFinal;
     private double ValorBruto;
+    protected Boolean Status;
     
     public Obra() {
        super();
@@ -12,12 +15,8 @@ public class Obra extends CadastroDeDados {
 
     public Obra(Integer ID, String nome, double valorBruto) {
         super(ID, nome);
-        ValorBruto = valorBruto;
-    }
-
-    public Obra(int ID, String Nome, double valorBruto) {
-        super(ID, Nome);
-        ValorBruto = valorBruto;
+        this.ValorBruto = valorBruto;
+        this.Status=true;
     }
 /*
     public Date getDatainicio() {

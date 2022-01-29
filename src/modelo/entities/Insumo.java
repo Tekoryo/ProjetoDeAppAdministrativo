@@ -5,7 +5,6 @@ public class Insumo extends CadastroDeDados {
     protected String LocalDaCompra;
     protected int Quantidade;
     protected Double ValorUnitario;
-    protected Double ValorTotal;
 
     public Insumo() {
         super();
@@ -37,12 +36,20 @@ public class Insumo extends CadastroDeDados {
 
     public void aumentarItem(String LocalDaCompra, int Quantidade, double ValorUnitario){
         this.LocalDaCompra=LocalDaCompra;
-        this.Quantidade=Quantidade;
+        this.Quantidade=this.Quantidade+Quantidade;
         this.ValorUnitario=ValorUnitario;
-        this.ValorTotal=Quantidade*ValorUnitario;
     }
     public void diminuirItem(int Quantidade){
         this.Quantidade=this.Quantidade-Quantidade;
         
     }
+    @Override
+    public String toString() {
+        return " | ID do Insumo"+super.getID()
+                +"\n | Nome do Insumo"+super.getNome()
+                +"\n | Local Da Compra: " + LocalDaCompra 
+                +"\n | Quantidade: " + Quantidade 
+                +"\n | Valor Unitario=" + getValor();
+    }
+    
 }

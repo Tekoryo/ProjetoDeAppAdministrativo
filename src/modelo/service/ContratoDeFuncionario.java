@@ -11,6 +11,13 @@ public class ContratoDeFuncionario {
     Scanner Sc=new Scanner(System.in);
     List<Funcionario>funcionarios=new ArrayList<>();
 
+    public void Indicador(){
+        CadastroDeFuncionario();
+        modificarSalario();
+        status();
+        atualizandodados();
+    }
+
     public void CadastroDeFuncionario(){
         System.out.print("ID: ");
         int ID=Sc.nextInt();
