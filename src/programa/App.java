@@ -7,9 +7,9 @@ import java.util.Scanner;
 import modelo.entities.CadastroDeDados;
 import modelo.entities.Cliente;
 import modelo.entities.Obra;
-import modelo.entities.enums.TipoDeContrato;
-import modelo.servise.ContratoDeFuncionario;
-import modelo.servise.Estoque;
+import modelo.service.ContratoCliente;
+import modelo.service.ContratoDeFuncionario;
+import modelo.service.Estoque;
 
 
 public class App {
@@ -18,6 +18,7 @@ public class App {
     static Estoque estoque=new Estoque();
     static Cliente empresa=new Cliente();
     static ContratoDeFuncionario contratoDeFuncionario=new ContratoDeFuncionario();
+    static ContratoCliente contratoCliente=new ContratoCliente();
     
     public static void main(String[] args) throws Exception {
         try{
@@ -65,31 +66,15 @@ public class App {
         
     }
     public static void Cadastrodados(int info){
-        System.out.print("ID: ");
-        int ID=Sc.nextInt();
-        System.out.print("Nome: ");
-        String Nome=Sc.next();
-
         if(info==2||info==3){
             estoque.Cadastraitem();
         }else if(info==1){
             contratoDeFuncionario.CadastroDeFuncionario();
         }else if(info==4){
-            CadastroDeEmpresa(ID,Nome);
+           contratoCliente.CadastraCliente();
         }
     }
     public static void CadastroDeEmpresa(int ID,String Nome){
-        System.out.print("CPF ou CNPJ [1/0]: ");
-        int PFPJ=Sc.nextInt();
-        if(PFPJ==1){
-            System.out.print("Digite o CPF: ");
-            int CPF=Sc.nextInt();
-            dados.add(new Cliente(ID,Nome,CPF));
-        }else{
-            System.out.print("Digite o CNPJ: ");
-            int CNPJ=Sc.nextInt();
-            dados.add(new Cliente(ID,Nome,CNPJ));
-        }
         /*
         System.out.print("Data inicial: ");
         String TipoContrato=Sc.next();

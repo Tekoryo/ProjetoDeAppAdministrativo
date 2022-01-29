@@ -3,15 +3,14 @@ package modelo.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelo.service.ControleDeObra;
+
 public class Cliente extends CadastroDeDados{
     
     private Integer CNPJ,CPF;
 
-    static List<Obra>Obras=new ArrayList<>();
-
     public Cliente() {
        super();
-        
     }
     public Cliente(Integer ID, String nome,int CPF) {
         super(ID, nome);
@@ -31,7 +30,7 @@ public class Cliente extends CadastroDeDados{
     
     // Criar um metodo para fazer as alteracao do dados caso seja nessesario
 
-    public static void AddObra(Obra obra) {
-        Obras.add(obra);
+    public ControleDeObra Obra() {
+       return new ControleDeObra();
     }
 }
