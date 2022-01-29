@@ -61,4 +61,22 @@ public class Funcionario extends CadastroDeDados {
         this.TipoContrato = tipoContrato;
         this.FuncaoNaEmpresa = funcaoNaEmpresa;
     }
+    public String StatusText(boolean status){
+        if(status==true){
+            return "Contratado";
+        }else{
+            return "Demitido";
+        }
+    }
+    @Override
+    public String toString() {
+        return "| ID do Funcionario: "+super.getID()
+                +   "\n | Nome do Funcionario: "+super.getNome()
+                +   "\n | Funcionario: " + FuncaoNaEmpresa 
+                +   "\n | StatusDoContrato=" + StatusText(StatusDoContrato)
+                +   "\n | TipoContrato=" + TipoContrato 
+                +   "\n | salario=" + salario 
+                +   "\n | telefone=" + telefone;
+    }
+    
 }

@@ -12,13 +12,26 @@ public class ContratoDeFuncionario {
     List<Funcionario>funcionarios=new ArrayList<>();
 
     public void Indicador(){
-        CadastroDeFuncionario();
-        modificarSalario();
-        status();
-        atualizandodados();
+        System.out.println("==== Bem-Vindo ao Contrato de funcionario  ====");
+        System.out.println("Cadastro, Modificar, Stataus, Atualizar ou Visualizar [1/2/3/4/5]:");
+        int N=Sc.nextInt();
+        if(N==1){
+            CadastroDeFuncionario();
+        }else if(N==2){
+            modificarSalario();
+        }else if(N==3){
+            status();
+        }else if(N==4){
+            atualizandodados();
+        }else if(N==5){
+            viewFuncionario();
+        }else{
+            System.out.println("[Erro]");
+        }
     }
 
     public void CadastroDeFuncionario(){
+        System.out.println("==== Cadastro de funcionario ====");
         System.out.print("ID: ");
         int ID=Sc.nextInt();
         System.out.print("Nome: ");
@@ -35,12 +48,14 @@ public class ContratoDeFuncionario {
         funcionarios.add(new modelo.entities.Funcionario(ID, Nome, telefone, salario, TipoDeContrato.valueOf(TipoContrato), FuncaoNaEmpresa));
     }
     public void modificarSalario(){
+        System.out.println("==== Modificador de Salario ====");
         Funcionario Idfuncionario=VerificadorId();
         System.out.print("Valor do novo salario: ");
         double salario=Sc.nextDouble();
         Idfuncionario.MudancaSalario(salario);
     }
     public void status(){
+        System.out.println("==== Status funcionario ====");
         Funcionario Idfuncionario=VerificadorId();
         System.out.print("Demitir, Recontratar ou Verificar[D/R/V]: ");
         char StatusItem=Sc.next().charAt(0);
@@ -57,6 +72,7 @@ public class ContratoDeFuncionario {
         }
     }
     public void atualizandodados(){
+        System.out.println("==== Atualizar dados de funcionario ====");
         Funcionario Idfuncionario=VerificadorId();
         System.out.println("Quais dados pretende atualizar: ");
         System.out.print("Nome, Telefone, Função ou modelo de contrato ou todos[N/T/F/C/A]: ");
@@ -93,6 +109,19 @@ public class ContratoDeFuncionario {
             }
         
     }
+
+    public void viewFuncionario(){
+        System.out.println("==== Visualiza Lista de funcionario ====");
+        for(Funcionario f: funcionarios){
+            System.out.println(f.toString());
+            
+            for(int x=0;x<f.toString().length();x++){
+                System.out.print("_");
+            }
+            System.out.println("");
+        }
+    }
+
     public Funcionario VerificadorId(){
 
         System.out.print("ID que Deseja: ");
