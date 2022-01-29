@@ -73,7 +73,7 @@ public class App {
         if(info==2||info==3){
             estoque.Cadastraitem();
         }else if(info==1){
-            contratoDeFuncionario.CadastroDeFuncionario(ID,Nome);
+            contratoDeFuncionario.CadastroDeFuncionario();
         }else if(info==4){
             CadastroDeEmpresa(ID,Nome);
         }
