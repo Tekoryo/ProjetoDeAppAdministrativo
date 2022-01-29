@@ -53,26 +53,26 @@ public class Estoque {
         System.out.print("Estoque ou Chapa[1/0]: ");
         int y=Sc.nextInt();
         if(y==1){
-            Insumo insumos=insumo.stream().filter(x -> x.getID()==Buscar).findFirst().orElse(null);
-            if(insumos!=null){
+            Insumo IdInsumos=VerificarIdInsumo();
+            if(IdInsumos!=null){
                 if(N==1){
-                    addInsumo(insumos);
+                    addInsumo(IdInsumos);
                 }else{
-                    diminuirinsumo(insumos);
+                    diminuirinsumo(IdInsumos);
                 }
             }
         }else{
-            Chapa chapas=chapa.stream().filter(x -> x.getID()==Buscar).findFirst().orElse(null);
-            if(chapas!=null){
+           Chapa IdChapa=VerificarIdChapa();
+            if(IdChapa!=null){
                 if(N==1){
-                    addChapa(chapas);
+                    addChapa(IdChapa);
                 }else{
-                    diminuirChapa(chapas);
+                    diminuirChapa(IdChapa);
                 }
             }
         } 
     } 
-    protected void addInsumo(Insumo insumos){
+    protected void addInsumo(Insumo IdInsumos){
         System.out.println("==== Adicionar Insumo ====");
         System.out.print("Local onde foi comprado: ");
         String LocalDaCompra=Sc.next();
@@ -80,16 +80,16 @@ public class Estoque {
         int quatidade=Sc.nextInt();
         System.out.print("preco unitario: ");
         double PrecoUnicario=Sc.nextInt();
-        insumos.aumentarItem(LocalDaCompra,quatidade,PrecoUnicario);
+        IdInsumos.aumentarItem(LocalDaCompra,quatidade,PrecoUnicario);
     }
-    protected void diminuirinsumo(Insumo insumos){
+    protected void diminuirinsumo(Insumo IdInsumos){
         System.out.println("==== Remove Insumo ====");
         System.out.print("Que item você deseja modificar: ");
         int quatidade=Sc.nextInt();
-        insumos.diminuirItem(quatidade);
+        IdInsumos.diminuirItem(quatidade);
     }
 
-    protected void addChapa(Chapa chapas){
+    protected void addChapa(Chapa IdChapa){
         System.out.println("==== Adicionar Chapa ====");
         System.out.print("Local onde foi comprado: ");
         String LocalDaCompra=Sc.next();
@@ -97,13 +97,13 @@ public class Estoque {
         Double metroQuadrado=Sc.nextDouble();
         System.out.print("preco unitario: ");
         double ValorPorMetroQuadrado=Sc.nextInt();
-        chapas.aumentarItem(LocalDaCompra, metroQuadrado, ValorPorMetroQuadrado);
+        IdChapa.aumentarItem(LocalDaCompra, metroQuadrado, ValorPorMetroQuadrado);
     }
-    protected void diminuirChapa(Chapa chapas){
+    protected void diminuirChapa(Chapa IdChapa){
         System.out.println("==== Remove Chapa ====");
         System.out.print("Que item você deseja modificar: ");
         double metroQuadrado=Sc.nextDouble();
-        chapas.diminuirItem(metroQuadrado);
+        IdChapa.diminuirItem(metroQuadrado);
         
     }
     public void ViewEstoque(){
@@ -140,5 +140,16 @@ public class Estoque {
             System.out.println("");
         }
     }
-    
+    public Chapa VerificarIdChapa(){
+        System.out.print("ID que Deseja: ");
+        int Buscar=Sc.nextInt();
+        Chapa IdChapa=chapa.stream().filter(x -> x.getID()==Buscar).findFirst().orElse(null);
+        return IdChapa;
+    } 
+    public Insumo VerificarIdInsumo(){
+        System.out.print("ID que Deseja: ");
+        int Buscar=Sc.nextInt();
+        Insumo IdInsumos=insumo.stream().filter(x -> x.getID()==Buscar).findFirst().orElse(null);
+        return IdInsumos;
+    } 
 }
