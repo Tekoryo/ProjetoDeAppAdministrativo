@@ -18,21 +18,21 @@ public class UI {
     public void LogicaIndicador(){
         
         System.out.println("==== Bem-Vindo ====");
-        System.out.print("Estoque, Clinete ou Funcionario [1/2/3]:");
-        int x=Sc.nextInt();
-
-        if(x==1){
-            estoque.Indicador();
-        }else if(x==2){
-            try {
-                contratoCliente.Indicador();
-            } catch (ParseException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+        int x;
+        do{
+            System.out.print("Estoque, Clinte, Funcionario ou Sair do programa [1/2/3/4]:");
+            x=Sc.nextInt();
+            if(x==1){
+                estoque.Indicador();
+            }else if(x==2){
+                try {
+                    contratoCliente.Indicador();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }else if(x==3){
+                contratoDeFuncionario.Indicador();
             }
-        }else if(x==3){
-            contratoDeFuncionario.Indicador();
-        }
-        
+        }while(x!=4);
     }
 }
