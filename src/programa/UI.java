@@ -8,7 +8,7 @@ import modelo.service.ContratoDeFuncionario;
 import modelo.service.ControleDeObra;
 import modelo.service.Estoque;
 
-public class Logica {
+public class UI {
     Scanner Sc=new Scanner(System.in);
     protected Estoque estoque=new Estoque();
     protected ContratoDeFuncionario contratoDeFuncionario=new ContratoDeFuncionario();
