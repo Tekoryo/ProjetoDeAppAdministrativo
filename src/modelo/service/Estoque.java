@@ -15,6 +15,8 @@ public class Estoque {
     private List<Chapa>chapa=new ArrayList<>();
     
     public void Indicador(){
+        int x;
+       do{
         System.out.println("==== Estoque ====");
         System.out.print("Cadastrar, modificar ou Visualizar [1/2/3]: ");
         int N=Sc.nextInt();
@@ -25,6 +27,9 @@ public class Estoque {
         }else{
             ViewEstoque();
         }
+        System.out.print("x: ");
+        x=Sc.nextInt();
+       }while(x!=1);
     }
     protected void Cadastraitem(){
         System.out.println("==== Cadastro de Estoque ====");
@@ -108,6 +113,7 @@ public class Estoque {
     }
     public void ViewEstoque(){
         System.out.println("==== Visualiza Estoque ====");
+        System.out.println("Chapa, Insumo ou Todos: ");
         int x=Sc.nextInt();
         if(x==1){
             ViewChapa();

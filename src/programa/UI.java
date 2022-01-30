@@ -1,5 +1,6 @@
 package programa;
 
+import java.text.ParseException;
 import java.util.Scanner;
 
 import modelo.entities.Cliente;
@@ -23,9 +24,15 @@ public class UI {
         if(x==1){
             estoque.Indicador();
         }else if(x==2){
-            contratoCliente.Indicador();
+            try {
+                contratoCliente.Indicador();
+            } catch (ParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }else if(x==3){
             contratoDeFuncionario.Indicador();
         }
+        
     }
 }

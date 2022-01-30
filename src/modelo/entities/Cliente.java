@@ -33,4 +33,18 @@ public class Cliente extends CadastroDeDados{
     public ControleDeObra Obra() {
        return new ControleDeObra();
     }
+    @Override
+    public String toString() {
+        return "Id da cliente: "+super.getID()
+                +"Nome da cliente: "+super.getNome()
+                +Certificado();
+    }
+    public String Certificado(){
+        if(CPF!=null||CNPJ==null){
+            return "CPF: "+String.valueOf(getCPF());
+        }else{
+            return "CNPJ: "+String.valueOf(getCNPJ());            
+        }
+    }
+    
 }

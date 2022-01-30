@@ -1,5 +1,6 @@
 package modelo.service;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,10 +12,23 @@ public class ContratoCliente{
     Scanner Sc=new Scanner(System.in);
     List<Cliente>clientes=new ArrayList<>();
 
-    public void Indicador(){
-        CadastraCliente();
-        CadastraObra();
-        GastoObra();
+    public void Indicador() throws ParseException{
+
+        System.out.println("==== Estoque ====");
+        System.out.print("Cadastrar, cadastrar obra, Gasto da obra, Visualizar cliente ou visualizar do cliente [1/2/3/4/5]: ");
+        int N=Sc.nextInt();
+        if(N==1){
+            CadastraCliente();
+        }else if(N==2){
+            CadastraObra();
+        }else if(N==3){
+            GastoObra();
+        }else if(N==4){
+            VisualizarCliente();
+        }else if(N==5){
+            VisualizarObraDoCliente();
+        }
+
     }
 
     public void CadastraCliente(){
@@ -33,23 +47,36 @@ public class ContratoCliente{
             int CNPJ=Sc.nextInt();
             clientes.add(new Cliente(ID,Nome,CNPJ));
         }
-        
     }
     
-    public void CadastraObra(){
+    public void CadastraObra() throws ParseException{
         Cliente Idclientes=VerificadorId();
         ControleDeObra controleDeObra=Idclientes.Obra();
         controleDeObra.AdicionarObra();
-
-    }
-    public void VisualizarEstoque(Estoque e){
-        
     }
     public void GastoObra(){
         Cliente Idclientes=VerificadorId();
         ControleDeObra controleDeObra=Idclientes.Obra();
         controleDeObra.ControledeGasto();
     }
+    
+    public void VisualizarObraDoCliente(){
+        Cliente Idclientes=VerificadorId();
+        ControleDeObra controleDeObra=Idclientes.Obra();
+        controleDeObra.VisualizarObra();
+    }
+    public void VisualizarCliente(){
+        System.out.println("==== Visualiza Todos os cliente ====");
+        for(Cliente c:clientes){
+            System.out.println(c.toString());
+            
+            for(int x=0;x<c.toString().length();x++){
+                System.out.print("_");
+            }
+            System.out.println("");
+        }
+    }
+    
     public Cliente VerificadorId(){
         System.out.print("ID que Deseja: ");
         int Buscar=Sc.nextInt();
