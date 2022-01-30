@@ -11,14 +11,13 @@ import modelo.service.Estoque;
 public class ContratoCliente{
     Scanner Sc=new Scanner(System.in);
     List<Cliente>clientes=new ArrayList<>();
-
+    protected char Sair;
     public void Indicador() throws ParseException{
 
-        System.out.println("==== Estoque ====");
-        int N;
         do {
+            System.out.println("==== Contrato de Cliente ====");
             System.out.print("Cadastrar, cadastrar obra, Gasto da obra, Visualizar cliente, visualizar obra do cliente ou Sair [1/2/3/4/5/6]: ");
-            N=Sc.nextInt();
+            int N=Sc.nextInt();
             if(N==1){
                 CadastraCliente();
             }else if(N==2){
@@ -30,17 +29,18 @@ public class ContratoCliente{
             }else if(N==5){
                 VisualizarObraDoCliente();
             }
-        } while (N!=6);
+            System.out.print("Sair [s/N]: ");
+            Sair=Sc.next().charAt(0);
+        } while (Sair!='s'||Sair!='S');
 
     }
 
     public void CadastraCliente(){
         System.out.println("==== Cadastro de Cliente ====");
-        char x;
         do {
             System.out.print("ID: ");
             int ID=Sc.nextInt();
-            while(VerificadorId()!=null){
+            while(hasID(ID)){
                 System.out.print("Digite um ID não utilizado: ");
                 ID=Sc.nextInt();
             }
@@ -57,9 +57,9 @@ public class ContratoCliente{
                 int CNPJ=Sc.nextInt();
                 clientes.add(new Cliente(ID,Nome,CNPJ));
             }
-            System.out.print("Sair do cadastro [S/n]: ");
-            x=Sc.next().charAt(0);
-        } while (x!='S'||x!='s');
+            System.out.print("Sair [s/N]: ");
+            Sair=Sc.next().charAt(0);
+        } while (Sair!='S'||Sair!='s');
     }
     
     public void CadastraObra() throws ParseException{
@@ -95,6 +95,9 @@ public class ContratoCliente{
         int Buscar=Sc.nextInt();
         Cliente idCliente=clientes.stream().filter(x -> x.getID()==Buscar).findFirst().orElse(null);
         return idCliente;             
-
     }
+    public boolean hasID(int ID){
+        Cliente idCliente=clientes.stream().filter(x ->x.getID()==ID).findFirst().orElse(null);
+        return idCliente !=null;
+    } 
 }

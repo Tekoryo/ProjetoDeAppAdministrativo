@@ -13,18 +13,26 @@ public class ControleDeObra {
     Scanner Sc=new Scanner(System.in);
     SimpleDateFormat Sdf=new SimpleDateFormat("dd/MM/yyyy");
     List<Obra>obras=new ArrayList<>();
-
+    protected char Sair;
     public void AdicionarObra() throws ParseException{
-        System.out.print("ID:");
-        int IDObra=Sc.nextInt();
-        System.out.print("Nome:");
-        String NomeObra=Sc.next();
-        System.out.print("Valor Bruto a receber: ");
-        double ValorObra=Sc.nextDouble();
-        System.out.print("Valor Bruto a receber: ");
-        Date Datainicio=Sdf.parse(Sc.next());
-        Obra NovaObra=new Obra(IDObra, NomeObra, ValorObra,Datainicio);
-        obras.add(NovaObra);
+        do{
+            System.out.print("ID: ");
+            int ID=Sc.nextInt();
+            while(hasID(ID)){
+                System.out.print("Digite um ID não utilizado: ");
+                ID=Sc.nextInt();
+            }
+            System.out.print("Nome:");
+            String NomeObra=Sc.next();
+            System.out.print("Valor Bruto a receber: ");
+            double ValorObra=Sc.nextDouble();
+            System.out.print("Valor Bruto a receber: ");
+            Date Datainicio=Sdf.parse(Sc.next());
+            Obra NovaObra=new Obra(ID, NomeObra, ValorObra,Datainicio);
+            obras.add(NovaObra);
+            System.out.print("Sair [s/N]: ");
+            Sair=Sc.next().charAt(0);
+        }while(Sair!='s'||Sair!='S');
     }
     public void ControledeGasto(){
         Obra idObra=VerificadorId();
@@ -52,4 +60,8 @@ public class ControleDeObra {
             System.out.println("");
         }
     }
+    public boolean hasID(int ID){
+        Obra IdObra=obras.stream().filter(x ->x.getID()==ID).findFirst().orElse(null);
+        return IdObra !=null;
+    } 
 }

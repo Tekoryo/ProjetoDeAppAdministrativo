@@ -1,1 +1,5 @@
+Global:
 Add no verificador de id para ver se o ID esta ou não disponivel 
+
+Estoque:
+criar no Estoque um metodo para comparar os Id de chapa e insumo caso ja tenha um id em um dos dois deve ser digitar um novo id

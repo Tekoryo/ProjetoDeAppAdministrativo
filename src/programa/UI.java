@@ -20,6 +20,7 @@ public class UI {
         System.out.println("==== Bem-Vindo ====");
         int x;
         do{
+            System.out.println("==== Menu ====");
             System.out.print("Estoque, Clinte, Funcionario ou Sair do programa [1/2/3/4]:");
             x=Sc.nextInt();
             if(x==1){

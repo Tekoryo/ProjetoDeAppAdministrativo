@@ -10,42 +10,52 @@ import modelo.entities.enums.TipoDeContrato;
 public class ContratoDeFuncionario {
     Scanner Sc=new Scanner(System.in);
     List<Funcionario>funcionarios=new ArrayList<>();
-
+    protected char Sair;
     public void Indicador(){
-        System.out.println("==== Bem-Vindo ao Contrato de funcionario  ====");
-        System.out.println("Cadastro, Modificar, Stataus, Atualizar ou Visualizar [1/2/3/4/5]:");
-        int N=Sc.nextInt();
-        if(N==1){
-            CadastroDeFuncionario();
-        }else if(N==2){
-            modificarSalario();
-        }else if(N==3){
-            status();
-        }else if(N==4){
-            atualizandodados();
-        }else if(N==5){
-            viewFuncionario();
-        }else{
-            System.out.println("[Erro]");
-        }
+        do{
+            System.out.println("==== Contrato de funcionario  ====");
+            System.out.println("Cadastro, Modificar, Stataus, Atualizar ou Visualizar [1/2/3/4/5]:");
+            int N=Sc.nextInt();
+            if(N==1){
+                CadastroDeFuncionario();
+            }else if(N==2){
+                modificarSalario();
+            }else if(N==3){
+                status();
+            }else if(N==4){
+                atualizandodados();
+            }else if(N==5){
+                viewFuncionario();
+            }else{
+                System.out.println("[Erro]");
+            }
+            System.out.print("Sair [s/N]: ");
+            Sair=Sc.next().charAt(0);
+        }while(Sair!='s'||Sair!='S');
     }
 
     public void CadastroDeFuncionario(){
-        System.out.println("==== Cadastro de funcionario ====");
-        System.out.print("ID: ");
-        int ID=Sc.nextInt();
-        System.out.print("Nome: ");
-        String Nome=Sc.next();
-        System.out.print("telefone: ");
-        Long telefone=Sc.nextLong();
-        System.out.print("salario: ");
-        double salario=Sc.nextDouble();
-        System.out.print("Tipo de Contratação: ");
-        String TipoContrato=Sc.next();
-        System.out.print("Função na empresa: ");
-        String FuncaoNaEmpresa=Sc.next();
+        do{
+            System.out.println("==== Cadastro de funcionario ====");
+            System.out.print("ID: ");
+            int ID=Sc.nextInt();
+            System.out.print("Nome: ");
+            String Nome=Sc.next();
+            System.out.print("telefone: ");
+            Long telefone=Sc.nextLong();
+            System.out.print("salario: ");
+            double salario=Sc.nextDouble();
+            System.out.print("Tipo de Contratação: ");
+            String TipoContrato=Sc.next();
+            System.out.print("Função na empresa: ");
+            String FuncaoNaEmpresa=Sc.next();
 
-        funcionarios.add(new modelo.entities.Funcionario(ID, Nome, telefone, salario, TipoDeContrato.valueOf(TipoContrato), FuncaoNaEmpresa));
+            funcionarios.add(new modelo.entities.Funcionario(ID, Nome, telefone, salario, TipoDeContrato.valueOf(TipoContrato), FuncaoNaEmpresa));
+
+            System.out.print("Sair [s/N]: ");
+            Sair=Sc.next().charAt(0);
+        }while(Sair!='s'||Sair!='S');
+            
     }
     public void modificarSalario(){
         System.out.println("==== Modificador de Salario ====");
@@ -72,12 +82,13 @@ public class ContratoDeFuncionario {
         }
     }
     public void atualizandodados(){
-        System.out.println("==== Atualizar dados de funcionario ====");
-        Funcionario Idfuncionario=VerificadorId();
-        System.out.println("Quais dados pretende atualizar: ");
-        System.out.print("Nome, Telefone, Função ou modelo de contrato ou todos[N/T/F/C/A]: ");
-        //colocar um nome melhor
-        char c=Sc.next().charAt(0);
+        do{
+            System.out.println("==== Atualizar dados de funcionario ====");
+            Funcionario Idfuncionario=VerificadorId();
+            System.out.println("Quais dados pretende atualizar: ");
+            System.out.print("Nome, Telefone, Função ou modelo de contrato ou todos[N/T/F/C/A]: ");
+            //colocar um nome melhor
+            char c=Sc.next().charAt(0);
             if(c=='N'||c=='n'){
                 System.out.print("Novo Nome: ");
                 String nome=Sc.next();
@@ -107,7 +118,9 @@ public class ContratoDeFuncionario {
             }else{
                 System.out.println("Alternativa invalida!");
             }
-        
+            System.out.print("Sair [s/N]: ");
+            Sair=Sc.next().charAt(0);
+        }while(Sair!='s'||Sair!='S');
     }
 
     public void viewFuncionario(){
