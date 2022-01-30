@@ -7,6 +7,7 @@ import javax.swing.text.StyledEditorKit.BoldAction;
 public class Obra extends CadastroDeDados {
     //private Date Datainicio,DataFinal;
     private double ValorBruto;
+    private double ValorLiquido;
     protected Boolean Status;
     
     public Obra() {
@@ -37,6 +38,8 @@ public class Obra extends CadastroDeDados {
     public void setValorBruto(double valorBruto) {
         ValorBruto = valorBruto;
     }
-*/
-    
+    */
+    public void t(double x){
+        this.ValorLiquido=this.ValorBruto-x;
+    }
 }

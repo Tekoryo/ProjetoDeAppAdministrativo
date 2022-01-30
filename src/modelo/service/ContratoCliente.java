@@ -48,13 +48,13 @@ public class ContratoCliente{
     public void GastoObra(){
         Cliente Idclientes=VerificadorId();
         ControleDeObra controleDeObra=Idclientes.Obra();
-        controleDeObra.EstO();
+        controleDeObra.ControledeGasto();
     }
     public Cliente VerificadorId(){
         System.out.print("ID que Deseja: ");
         int Buscar=Sc.nextInt();
-        Cliente Idfuncionario=clientes.stream().filter(x -> x.getID()==Buscar).findFirst().orElse(null);
-        return Idfuncionario;             
+        Cliente idCliente=clientes.stream().filter(x -> x.getID()==Buscar).findFirst().orElse(null);
+        return idCliente;             
 
     }
 }

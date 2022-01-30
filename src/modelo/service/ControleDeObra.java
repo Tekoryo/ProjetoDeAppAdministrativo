@@ -19,12 +19,21 @@ public class ControleDeObra {
         double ValorObra=Sc.nextDouble();
 
         Obra NovaObra=new Obra(IDObra, NomeObra, ValorObra);
+        obras.add(NovaObra);
     }
-    public void GastoObra(){
+    public void ControledeGasto(){
+        Obra idObra=VerificadorId();
+        System.out.println("==== Controle de Gasto ====");
+        System.out.print("Valor do Gastos que ira informa: ");
+        double valorx=Sc.nextDouble();
+        idObra.t(valorx);
+        
+    }
+    public Obra VerificadorId(){
+        System.out.print("ID que Deseja: ");
+        int Buscar=Sc.nextInt();
+        Obra IdObra=obras.stream().filter(x -> x.getID()==Buscar).findFirst().orElse(null);
+        return IdObra;             
 
     }
-    public void EstO(){
-
-    }
-
 }
