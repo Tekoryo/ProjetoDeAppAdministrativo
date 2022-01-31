@@ -7,6 +7,7 @@ import java.util.Scanner;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
 
 import modelo.entities.Chapa;
+import modelo.entities.DomanException;
 import modelo.entities.Insumo;
 
 public class Estoque {
@@ -15,24 +16,37 @@ public class Estoque {
     private List<Chapa>chapa=new ArrayList<>();
     protected char Sair;
     
-    public void Indicador(){
-       do{
-            System.out.println("==== Estoque ====");
-            System.out.print("Cadastrar, modificar ou Visualizar [1/2/3]: ");
+    public void Indicador() {
+        do {
+            System.out.println("==== Menu do Estoque ====");
+            System.out.println("cadastrar, modificar ou visualizar [1/2/3]: ");
+            int x=1;
+
             int N=Sc.nextInt();
             if(N==1){
                 Cadastraitem();
-            }else if(N==2){
+            }else if(N==2){  
                 modificaritem();
-            }else{
-                ViewEstoque();
             }
-            System.out.print("Sair [s/N]: ");
-            Sair=Sc.next().charAt(0);
-       }while(Sair!='s'||Sair!='S');
+            else if(N==3){
+                ViewEstoque();
+            }else{
+                System.out.println("Opisao invalida! ");
+                x=0;
+            }
+            if(x != 0){
+                System.out.print("Sair [s/N]: ");
+                Sair=Sc.next().charAt(0);               
+            }else{
+                System.out.println("Opisao invalida! ");
+                Sair='N';
+            }
+        } while (Sair!='S'||Sair!='s');
+       
     }
     protected void Cadastraitem(){
         do{
+            int x=1;
             System.out.println("==== Cadastro de Estoque ====");
             System.out.print("ID: ");
             int ID=Sc.nextInt();
@@ -40,17 +54,24 @@ public class Estoque {
             String Nome=Sc.next();
             System.out.print("Cadastra chapa ou Insumo [1/0]: ");
             int N=Sc.nextInt();
-            if(N!=1){
+            if(N==1){
                 Insumo Novoinsumo=new Insumo(ID,Nome); 
                 insumo.add(Novoinsumo);
-            }else{
+            }else if(N==0){
                 System.out.print("Espessura: ");
                 double Espessura=Sc.nextDouble();
                 Chapa NovaChapa=new Chapa(ID,Nome,Espessura); 
                 chapa.add(NovaChapa);
+            }else{
+                System.out.println("Opisao invalida! ");
+                x=0;
             }
-            System.out.print("Sair [s/N]: ");
-            Sair=Sc.next().charAt(0);
+            if(x != 0){
+                System.out.print("Sair [s/N]: ");
+                Sair=Sc.next().charAt(0);               
+            }else{
+                Sair='N';
+            }
         }while(Sair!='S'||Sair!='s');
     }
     protected void modificaritem(){
