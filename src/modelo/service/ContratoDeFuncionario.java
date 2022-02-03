@@ -11,32 +11,45 @@ public class ContratoDeFuncionario {
     Scanner Sc=new Scanner(System.in);
     List<Funcionario>funcionarios=new ArrayList<>();
     protected char Sair;
+    int s=1;
     public void Indicador(){
         do{
             System.out.println("==== Contrato de funcionario  ====");
             System.out.println("Cadastro, Modificar, Stataus, Atualizar ou Visualizar [1/2/3/4/5]:");
-            int N=Sc.nextInt();
-            if(N==1){
-                CadastroDeFuncionario();
-            }else if(N==2){
-                modificarSalario();
-            }else if(N==3){
-                status();
-            }else if(N==4){
-                atualizandodados();
-            }else if(N==5){
-                viewFuncionario();
-            }else{
-                System.out.println("[Erro]");
+            int apontar=Sc.nextInt();
+
+            switch (apontar) {
+                case 1:
+                        CadastroDeFuncionario();
+                    break;
+                case 2:
+                        modificarSalario();
+                    break;
+                case 3:
+                        status();
+                    break;
+                case 4:
+                        atualizandodados();
+                    break;
+                case 5:
+                        viewFuncionario();
+                    break;
+                default:
+                        System.out.println("Opisao invalida! ");
+                        s=0;
+                        Sair='N';
+                    break;
             }
-            System.out.print("Sair [s/N]: ");
-            Sair=Sc.next().charAt(0);
+            if(s==1){
+                System.out.print("Sair [s/N]: ");
+                Sair=Sc.next().charAt(0);
+            }
         }while(Sair!='s'||Sair!='S');
     }
 
     public void CadastroDeFuncionario(){
         do{
-            System.out.println("==== Cadastro de funcionario ====");
+            System.out.println("==== Menu de Cadastro de funcionario ====");
             System.out.print("ID: ");
             int ID=Sc.nextInt();
             System.out.print("Nome: ");
@@ -58,7 +71,7 @@ public class ContratoDeFuncionario {
             
     }
     public void modificarSalario(){
-        System.out.println("==== Modificador de Salario ====");
+        System.out.println("==== Menu de Modificador de Salario ====");
         Funcionario Idfuncionario=VerificadorId();
         System.out.print("Valor do novo salario: ");
         double salario=Sc.nextDouble();
@@ -69,16 +82,21 @@ public class ContratoDeFuncionario {
         Funcionario Idfuncionario=VerificadorId();
         System.out.print("Demitir, Recontratar ou Verificar[D/R/V]: ");
         char StatusItem=Sc.next().charAt(0);
-        if(StatusItem=='D'||StatusItem=='d'){
-            Idfuncionario.status(false);
-        }else if(StatusItem=='R'||StatusItem=='r'){
-            Idfuncionario.status(true);
-        }else if(StatusItem=='V'||StatusItem=='v'){
-            if(Idfuncionario.getStatusDoContrato()==true){
-                System.out.print("O funcionario: "+Idfuncionario+" se encontra contratado.");
-            }else{
-                System.out.print("O funcionario: "+Idfuncionario+" se encontra demitido.");
-            }
+        switch (StatusItem) {
+            case 'D','d':
+                    Idfuncionario.status(false); 
+                break;
+            case 'R','r':
+                if(Idfuncionario.getStatusDoContrato()==true){
+                    System.out.print("O funcionario: "+Idfuncionario+" se encontra contratado.");
+                }else{
+                    System.out.print("O funcionario: "+Idfuncionario+" se encontra demitido.");
+                }
+            break;
+            default:
+                    System.out.println("Opção Invalida!");
+                    System.out.println("Voltando ao menu inicial....");
+                break;
         }
     }
     public void atualizandodados(){
@@ -89,37 +107,47 @@ public class ContratoDeFuncionario {
             System.out.print("Nome, Telefone, Função ou modelo de contrato ou todos[N/T/F/C/A]: ");
             //colocar um nome melhor
             char c=Sc.next().charAt(0);
-            if(c=='N'||c=='n'){
-                System.out.print("Novo Nome: ");
-                String nome=Sc.next();
-                Idfuncionario.setNome(nome);
-            }else if(c=='T'||c=='t'){
-                System.out.print("Novo Telefone: ");
-                long telefone=Sc.nextLong();
-                Idfuncionario.setTelefone(telefone);
-            }else if(c=='F'||c=='f'){
-                System.out.print("Novo Função: ");
-                String funcaoNaEmpresa=Sc.next();
-                Idfuncionario.setFuncaoNaEmpresa(funcaoNaEmpresa);
-            }else if(c=='C'||c=='c'){
-                System.out.print("Novo Função: ");
-                String TipoContrato=Sc.next();
-                Idfuncionario.setTipoContrato(TipoDeContrato.valueOf(TipoContrato));
-            }else if(c=='A'||c=='a'){
-                System.out.print("Novo Nome: ");
-                String nome=Sc.next();
-                System.out.print("Novo Telefone: ");
-                Long telefone=Sc.nextLong();
-                System.out.print("Novo Tipo de Contratação: ");
-                String TipoContrato=Sc.next();
-                System.out.print("Nova Função na empresa: ");
-                String FuncaoNaEmpresa=Sc.next();
-                Idfuncionario.AtualizandoTodosDados( nome, telefone, TipoDeContrato.valueOf(TipoContrato), FuncaoNaEmpresa);
-            }else{
-                System.out.println("Alternativa invalida!");
+            switch (c) {
+                case 'N','n':
+                        System.out.print("Novo Nome: ");
+                        String nome=Sc.next();
+                        Idfuncionario.setNome(nome);                    
+                    break;
+                case 'T','t':
+                        System.out.print("Novo Telefone: ");
+                        long telefone=Sc.nextLong();
+                        Idfuncionario.setTelefone(telefone);
+                case 'F','f':
+                        System.out.print("Novo Função: ");
+                        String FuncaoNaEmpresa=Sc.next();
+                        Idfuncionario.setFuncaoNaEmpresa(FuncaoNaEmpresa);
+                    break;
+                case 'C','c': 
+                        System.out.print("Novo Função: ");
+                        String TipoContrato=Sc.next();
+                        Idfuncionario.setTipoContrato(TipoDeContrato.valueOf(TipoContrato));
+                    break;
+                case 'A','a': 
+                        System.out.print("Novo Nome: ");
+                        nome=Sc.next();
+                        System.out.print("Novo Telefone: ");
+                        telefone=Sc.nextLong();
+                        System.out.print("Novo Tipo de Contratação: ");
+                        TipoContrato=Sc.next();
+                        System.out.print("Nova Função na empresa: ");
+                        FuncaoNaEmpresa=Sc.next();
+                        Idfuncionario.AtualizandoTodosDados( nome, telefone, TipoDeContrato.valueOf(TipoContrato), FuncaoNaEmpresa);
+                    break;
+                default:
+                        System.out.println("Alternativa invalida!");
+                        s=0;
+                        Sair='N';
+                    break;
             }
-            System.out.print("Sair [s/N]: ");
-            Sair=Sc.next().charAt(0);
+            if(s==1){
+                System.out.print("Sair [s/N]: ");
+                Sair=Sc.next().charAt(0);
+            }
         }while(Sair!='s'||Sair!='S');
     }
 
@@ -141,7 +169,9 @@ public class ContratoDeFuncionario {
         int Buscar=Sc.nextInt();
         Funcionario Idfuncionario=funcionarios.stream().filter(x -> x.getID()==Buscar).findFirst().orElse(null);
         return Idfuncionario;             
-
     }
-
+    public boolean hasID(int ID){
+        Funcionario idFuncionario=funcionarios.stream().filter(x ->x.getID()==ID).findFirst().orElse(null);
+        return idFuncionario !=null;
+    } 
 }
