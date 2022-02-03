@@ -15,7 +15,7 @@ public class Estoque {
     private List<Insumo>insumo=new ArrayList<>();
     private List<Chapa>chapa=new ArrayList<>();
     protected char Sair;
-    int s=1;// Isso garante que ira haver o loop;
+    int s=1;
     
     public void Indicador() {
         do {
@@ -39,84 +39,36 @@ public class Estoque {
                     Sair='N';
                     break;
 
-                }
-                if(s == 1){
-                    System.out.print("Sair [s/N]: ");
-                    Sair=Sc.next().charAt(0);               
-                }
-            } while (Sair!='S'||Sair!='s');
-       
-        }
-        protected void Cadastraitem(){
-            do{
-                System.out.println("==== Menu de Cadastro ====");
-                System.out.print("Cadastra chapa ou Insumo [1/0]: ");
-                int apontar=Sc.nextInt();
-                System.out.print("ID: ");
-                int ID=Sc.nextInt();
-                while(hasID(apontar,ID)){
-                    System.out.print("DIgite um ID não utilizado: ");
-                    ID=Sc.nextInt();
-                }
-                System.out.print("Nome: ");
-                String Nome=Sc.next();
-                switch(apontar){
-                    case 1:
-                            Insumo Novoinsumo=new Insumo(ID,Nome); 
-                            insumo.add(Novoinsumo);
-                        break;
-                    case 2:
-                            System.out.print("Espessura: ");
-                            double Espessura=Sc.nextDouble();
-                            Chapa NovaChapa=new Chapa(ID,Nome,Espessura); 
-                            chapa.add(NovaChapa);
-                        break;
-                    default:
-                            System.out.println("Opisao invalida! ");
-                            Sair='N';
-                            s=0;
-                        break;
-                }
-                if(s == 1){
-                    System.out.print("Sair [s/N]: ");
-                    Sair=Sc.next().charAt(0);               
-                }
-        }while(Sair!='S'||Sair!='s');
-    }
-    protected void modificaritem(){
-        int N=0,apontar;
-        do{
-            System.out.println("==== menu de Modifição ====");
-            System.out.print("Estoque ou Chapa[1/0]: ");
-            apontar=Sc.nextInt();
-
-            if(apontar == 1||apontar == 0){
-                System.out.println("Irá adicionar ou remover item [1/0]: ");
-                N=Sc.nextInt();
             }
+            if(s == 1){
+                System.out.print("Sair [s/N]: ");
+                Sair=Sc.next().charAt(0);               
+            }
+        } while (Sair!='S'||Sair!='s');
+       
+    }
+    protected void Cadastraitem(){
+        do{
+            System.out.println("==== Cadastro de Estoque ====");
+            System.out.print("ID: ");
+            int ID=Sc.nextInt();
+            System.out.print("Nome: ");
+            String Nome=Sc.next();
+            System.out.print("Cadastra chapa ou Insumo [1/0]: ");
+            int apontar=Sc.nextInt();
             switch(apontar){
                 case 1:
-                        Insumo IdInsumos=VerificarId(1);
-                        if(IdInsumos!=null){
-                            if(N==1){
-                                addInsumo(IdInsumos);
-                            }else{
-                                diminuirinsumo(IdInsumos);
-                            }
-                        }
+                        Insumo Novoinsumo=new Insumo(ID,Nome); 
+                        insumo.add(Novoinsumo);
                     break;
                 case 2:
-                        Chapa IdChapa=VerificarId(2);
-                        if(IdChapa!=null){
-                            if(N==1){
-                                addChapa(IdChapa);
-                            }else{
-                                diminuirChapa(IdChapa);
-                            }
-                        }
+                        System.out.print("Espessura: ");
+                        double Espessura=Sc.nextDouble();
+                        Chapa NovaChapa=new Chapa(ID,Nome,Espessura); 
+                        chapa.add(NovaChapa);
                     break;
                 default:
-                        System.out.println("Opção invalida! ");
+                        System.out.println("Opisao invalida! ");
                         Sair='N';
                         s=0;
                     break;
@@ -126,6 +78,39 @@ public class Estoque {
                 Sair=Sc.next().charAt(0);               
             }
         }while(Sair!='S'||Sair!='s');
+    }
+    protected void modificaritem(){
+        System.out.println("==== Modificardor do Estoque ====");
+        System.out.println("Irá adicionar ou remover item [1/0]: ");
+        int N=Sc.nextInt();
+        System.out.print("ID que Deseja: ");
+        int Buscar=Sc.nextInt();
+        System.out.print("Estoque ou Chapa[1/0]: ");
+        int apontar=Sc.nextInt();
+        switch(apontar){
+            case 1:
+                    Insumo IdInsumos=VerificarId(1);
+                    if(IdInsumos!=null){
+                        if(N==1){
+                            addInsumo(IdInsumos);
+                        }else{
+                            diminuirinsumo(IdInsumos);
+                        }
+                    }
+                break;
+            case 2:
+                    Chapa IdChapa=VerificarId(2);
+                    if(IdChapa!=null){
+                        if(N==1){
+                            addChapa(IdChapa);
+                        }else{
+                            diminuirChapa(IdChapa);
+                        }
+                    }
+                break;
+            default:
+                break;
+        }
     } 
     protected void addInsumo(Insumo IdInsumos){
         System.out.println("==== Adicionar Insumo ====");
