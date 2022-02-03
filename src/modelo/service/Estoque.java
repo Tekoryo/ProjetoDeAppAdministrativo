@@ -15,62 +15,67 @@ public class Estoque {
     private List<Insumo>insumo=new ArrayList<>();
     private List<Chapa>chapa=new ArrayList<>();
     protected char Sair;
+    int s=1;
     
     public void Indicador() {
         do {
             System.out.println("==== Menu do Estoque ====");
             System.out.println("cadastrar, modificar ou visualizar [1/2/3]: ");
-            int x=1;
 
-            int N=Sc.nextInt();
-            if(N==1){
-                Cadastraitem();
-            }else if(N==2){  
-                modificaritem();
+            int apontar=Sc.nextInt();
+            switch(apontar){
+                case 1:
+                    Cadastraitem();
+                    break;
+                case 2:
+                    modificaritem();
+                    break;
+                case 3:
+                    ViewEstoque();
+                    break;
+                    default:
+                    System.out.println("Opisao invalida! ");
+                    s=0;
+                    Sair='N';
+                    break;
+
             }
-            else if(N==3){
-                ViewEstoque();
-            }else{
-                System.out.println("Opisao invalida! ");
-                x=0;
-            }
-            if(x != 0){
+            if(s == 1){
                 System.out.print("Sair [s/N]: ");
                 Sair=Sc.next().charAt(0);               
-            }else{
-                System.out.println("Opisao invalida! ");
-                Sair='N';
             }
         } while (Sair!='S'||Sair!='s');
        
     }
     protected void Cadastraitem(){
         do{
-            int x=1;
             System.out.println("==== Cadastro de Estoque ====");
             System.out.print("ID: ");
             int ID=Sc.nextInt();
             System.out.print("Nome: ");
             String Nome=Sc.next();
             System.out.print("Cadastra chapa ou Insumo [1/0]: ");
-            int N=Sc.nextInt();
-            if(N==1){
-                Insumo Novoinsumo=new Insumo(ID,Nome); 
-                insumo.add(Novoinsumo);
-            }else if(N==0){
-                System.out.print("Espessura: ");
-                double Espessura=Sc.nextDouble();
-                Chapa NovaChapa=new Chapa(ID,Nome,Espessura); 
-                chapa.add(NovaChapa);
-            }else{
-                System.out.println("Opisao invalida! ");
-                x=0;
+            int apontar=Sc.nextInt();
+            switch(apontar){
+                case 1:
+                        Insumo Novoinsumo=new Insumo(ID,Nome); 
+                        insumo.add(Novoinsumo);
+                    break;
+                case 2:
+                        System.out.print("Espessura: ");
+                        double Espessura=Sc.nextDouble();
+                        Chapa NovaChapa=new Chapa(ID,Nome,Espessura); 
+                        chapa.add(NovaChapa);
+                    break;
+                default:
+                        System.out.println("Opisao invalida! ");
+                        Sair='N';
+                        s=0;
+                    break;
             }
-            if(x != 0){
+            if(s == 1){
                 System.out.print("Sair [s/N]: ");
                 Sair=Sc.next().charAt(0);               
-            }else{
-                Sair='N';
             }
         }while(Sair!='S'||Sair!='s');
     }
@@ -81,26 +86,31 @@ public class Estoque {
         System.out.print("ID que Deseja: ");
         int Buscar=Sc.nextInt();
         System.out.print("Estoque ou Chapa[1/0]: ");
-        int y=Sc.nextInt();
-        if(y==1){
-            Insumo IdInsumos=VerificarId(1);
-            if(IdInsumos!=null){
-                if(N==1){
-                    addInsumo(IdInsumos);
-                }else{
-                    diminuirinsumo(IdInsumos);
-                }
-            }
-        }else{
-           Chapa IdChapa=VerificarId(2);
-            if(IdChapa!=null){
-                if(N==1){
-                    addChapa(IdChapa);
-                }else{
-                    diminuirChapa(IdChapa);
-                }
-            }
-        } 
+        int apontar=Sc.nextInt();
+        switch(apontar){
+            case 1:
+                    Insumo IdInsumos=VerificarId(1);
+                    if(IdInsumos!=null){
+                        if(N==1){
+                            addInsumo(IdInsumos);
+                        }else{
+                            diminuirinsumo(IdInsumos);
+                        }
+                    }
+                break;
+            case 2:
+                    Chapa IdChapa=VerificarId(2);
+                    if(IdChapa!=null){
+                        if(N==1){
+                            addChapa(IdChapa);
+                        }else{
+                            diminuirChapa(IdChapa);
+                        }
+                    }
+                break;
+            default:
+                break;
+        }
     } 
     protected void addInsumo(Insumo IdInsumos){
         System.out.println("==== Adicionar Insumo ====");
@@ -138,15 +148,20 @@ public class Estoque {
     }
     public void ViewEstoque(){
         System.out.println("==== Visualiza Estoque ====");
-        System.out.println("Chapa, Insumo ou Todos: ");
-        int x=Sc.nextInt();
-        if(x==1){
-            ViewChapa();
-        }else if(x==2){
-            ViewInsumo();
-        }else{
-            ViewChapa();
-            ViewInsumo();
+        System.out.println("Chapa, Insumo ou Todos[1/2/3]: ");
+        int apontar=Sc.nextInt();
+        switch(apontar){
+            case 1:
+                    ViewChapa();
+                break;
+            case 2:
+                    ViewInsumo();   
+                break;
+            case 3:
+            default:
+                    ViewChapa();
+                    ViewInsumo();
+                break;
         }
     }
     public void ViewChapa(){
@@ -182,10 +197,13 @@ public class Estoque {
             return (T) IdChapa;
         }
     } 
-    /*
-    public boolean hasID(int ID){
-        Insumo IdInsumos=insumo.stream().filter(x ->x.getID()==ID).findFirst().orElse(null);
-        return IdInsumos !=null;
+    public boolean hasID(int tipo,int ID){
+        if(tipo!=2){
+            Insumo IdInsumos=insumo.stream().filter(x -> x.getID()==ID).findFirst().orElse(null);
+            return IdInsumos !=null;
+        }else{
+            Chapa IdChapa=chapa.stream().filter(x -> x.getID()==ID).findFirst().orElse(null);
+            return IdChapa !=null;
+        }
     } 
-    */
 }
